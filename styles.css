@@ -1,0 +1,181 @@
+:root {
+  --primary-color: #00ff00;
+  --secondary-color: #ff00ff;
+  --text-color: #ffffff;
+  --background-color: #000000;
+  --card-background: rgba(255, 255, 255, 0.1);
+  --shadow-color: rgba(0, 255, 0, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #00ff00, #ff00ff);
+  animation: gradientShift 10s ease infinite;
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+@keyframes gradientShift {
+  0% {
+    background: linear-gradient(135deg, #00ff00, #ff00ff);
+  }
+  50% {
+    background: linear-gradient(135deg, #ff00ff, #00ffff);
+  }
+  100% {
+    background: linear-gradient(135deg, #00ff00, #ff00ff);
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 1024px;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  height: 1024px; /* Menetapkan tinggi tetap 1024px */
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.slider-container {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+  height: 100%; /* Menetapkan tinggi slide tetap 1024px */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Menempatkan konten di atas */
+  background-color: var(--card-background);
+  position: relative;
+}
+
+.slide img {
+  width: 100%;
+  height: 70%; /* Membatasi tinggi gambar agar tidak mempengaruhi layout */
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.info {
+  background: rgba(0, 0, 0, 0.5);
+  color: var(--text-color);
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-align: center;
+  width: 100%;
+  margin-top: 20px; /* Memberikan jarak antara gambar dan informasi */
+}
+
+.price {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.original-price {
+  font-size: 18px;
+  color: #ff0000;
+  text-decoration: line-through;
+  margin-left: 10px;
+}
+
+.link-button {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-top: 10px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+}
+
+.link-button:hover {
+  background-color: var(--secondary-color);
+  transform: scale(1.1);
+}
+
+.slider-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 255, 0, 0.3);
+  border: none;
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  color: var(--text-color);
+  z-index: 2;
+}
+
+.slider-button.prev {
+  left: 10px;
+}
+
+.slider-button.next {
+  right: 10px;
+}
+
+@media (max-width: 768px) {
+  .slider {
+    height: 768px; /* Menyesuaikan ukuran slider di layar kecil */
+  }
+
+  .slide {
+    height: 100%; /* Menyesuaikan ukuran slide di layar kecil */
+  }
+
+  .slide img {
+    height: 60%; /* Menyesuaikan gambar di perangkat mobile */
+  }
+
+  .info {
+    padding: 8px 12px;
+  }
+
+  .price {
+    font-size: 20px;
+  }
+
+  .original-price {
+    font-size: 16px;
+  }
+
+  .link-button {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .slider-button {
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+  }
+}
